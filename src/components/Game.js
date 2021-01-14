@@ -25,13 +25,15 @@ function Game({ game }) {
       layoutId={stringPathId}
       onClick={loadDetailHandler}>
       <Link to={`/game/${game.id}`}>
-        <motion.h3 layoutId={`title ${stringPathId}`}>{game.name}</motion.h3>
-        <p>{game.released}</p>
-        <motion.img
-          layoutId={`image ${stringPathId}`}
-          src={smallImage(game.background_image, 640)}
-          alt={game.name}
-        />
+        <div className='test'>
+          <motion.h3 layoutId={`title ${stringPathId}`}>{game.name}</motion.h3>
+          <p>{game.released}</p>
+          <motion.img
+            layoutId={`image ${stringPathId}`}
+            src={smallImage(game.background_image, 640)}
+            alt={game.name}
+          />
+        </div>
       </Link>
     </StyledGame>
   );
@@ -40,12 +42,18 @@ function Game({ game }) {
 export default Game;
 
 const StyledGame = styled(motion.div)`
-  min-height: 30vh;
+  min-height: 25vh;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   border-radius: 1rem;
+  margin: 1rem 1rem;
+  min-width: 20rem;
   cursor: pointer;
   overflow: hidden;
+  .test {
+    max-width: 32rem;
+  }
+
   img {
     width: 100%;
     height: 40vh;

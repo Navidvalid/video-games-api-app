@@ -62,6 +62,7 @@ function GameDetail({ pathId }) {
 
   //Data from store
   const { screen, game, isLoading } = useSelector((state) => state.detail);
+  console.log('the game >>>>>', game);
   return (
     <>
       {!isLoading && (
@@ -70,6 +71,10 @@ function GameDetail({ pathId }) {
             <Stats>
               <div className='rating'>
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
+                <p>
+                  The Developer{' '}
+                  {game.developers.map((developer) => developer.name)}
+                </p>
                 <p>Rating: {game.rating}</p>
                 {getStars()}
               </div>
@@ -95,7 +100,8 @@ function GameDetail({ pathId }) {
             <Description>
               <p>{game.description_raw}</p>
             </Description>
-            <div className='gallery'>
+            <Gallery>
+              <h3>The gallery</h3>
               {screen.results.map((screen) => (
                 <img
                   src={smallImage(screen.image, 1280)}
@@ -103,7 +109,7 @@ function GameDetail({ pathId }) {
                   alt={screen.image}
                 />
               ))}
-            </div>
+            </Gallery>
           </Detail>
         </CardShadow>
       )}
@@ -145,26 +151,70 @@ const Detail = styled(motion.div)`
   img {
     width: 100%;
   }
+  @media (max-width: 700px) {
+    padding: 0.5rem 1.5rem;
+  }
 `;
 
 const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  img {
-    width: 2rem;
-    height: 2rem;
-    display: inline;
+  h3 {
+    font-size: 2rem;
+  }
+  @media (max-width: 1050px) {
+    h3 {
+      font-size: 1.7rem;
+    }
+  }
+  @media (max-width: 850px) {
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 600px) {
+    h3 {
+      font-size: 1rem;
+    }
+  }
+  .rating {
+    img {
+      width: 1rem;
+      height: 1rem;
+      display: inline;
+    }
   }
 `;
 const Info = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   text-align: center;
+  width: 8rem;
 `;
 const Platforms = styled(motion.div)`
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
   img {
-    margin-left: 3rem;
+    margin: 0.3rem;
+    width: 2rem;
+    height: 2rem;
+  }
+  @media (max-width: 700px) {
+    img {
+      margin: 0.2rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  @media (max-width: 590px) {
+    img {
+      margin: 0.1rem;
+      width: 1rem;
+      height: 1rem;
+    }
   }
 `;
 
@@ -176,5 +226,23 @@ const Media = styled(motion.div)`
 `;
 
 const Description = styled(motion.div)`
-  margin: 5rem 0rem;
+  margin: 1.5rem 0rem;
+  @media (max-width: 700px) {
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  @media (max-width: 500px) {
+    p {
+      font-size: 0.7rem;
+    }
+  }
+`;
+const Gallery = styled.div`
+  h3 {
+    text-align: center;
+  }
+  img {
+    margin: 0.5rem 0rem;
+  }
 `;
