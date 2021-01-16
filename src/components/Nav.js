@@ -28,10 +28,14 @@ function Nav() {
     <StyledNav variants={fadeIn} initial='hidden' animate='show'>
       <Logo onClick={clearSearched}>
         <img src={logo} alt='logo' />
-        <h1>Games search engine</h1>
       </Logo>
       <form className='search'>
-        <input value={textInput} onChange={inputHandler} type='text' />
+        <input
+          placeholder='Search...'
+          value={textInput}
+          onChange={inputHandler}
+          type='text'
+        />
         <button onClick={submitSearch} type='submit'>
           Search
         </button>
@@ -43,19 +47,33 @@ function Nav() {
 export default Nav;
 
 const StyledNav = styled(motion.nav)`
-  padding: 3rem 5rem;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #dcdcdc;
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32rem;
+    padding: 1rem 0.5rem;
+    @media (max-width: 700px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20rem;
+    }
+  }
   input {
-    width: 30%;
-    font-size: 1.5rem;
+    width: 100%;
+    font-size: 1rem;
     padding: 0.5rem;
     border: none;
-    margin-top: 1rem;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
     outline: none;
   }
   button {
-    font-size: 1.5rem;
+    font-size: 1rem;
     border: none;
     padding: 0.5rem 2rem;
     cursor: pointer;
@@ -68,6 +86,7 @@ const Logo = styled(motion.div)`
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-top: 1rem;
   padding: 1rem;
   cursor: pointer;
   img {

@@ -62,15 +62,6 @@ function Home() {
           )}
         </Games>
 
-        <h2>Popular Games</h2>
-        <Games>
-          {loading ? (
-            <h3>Loading...</h3>
-          ) : (
-            popular.map((game) => <Game key={game.id} game={game} />)
-          )}
-        </Games>
-
         <h2>New Games</h2>
         <Games>
           {loading ? (
@@ -79,22 +70,38 @@ function Home() {
             newGames.map((game) => <Game key={game.id} game={game} />)
           )}
         </Games>
+
+        <h2>Popular Games</h2>
+        <Games>
+          {loading ? (
+            <h3>Loading...</h3>
+          ) : (
+            popular.map((game) => <Game key={game.id} game={game} />)
+          )}
+        </Games>
       </AnimateSharedLayout>
     </GameList>
   );
 }
 
 const GameList = styled(motion.div)`
-  padding: 0rem 5rem;
+  padding: 1rem 0rem;
+  background-color: #dcdcdc;
   h2 {
-    padding: 5rem 0rem;
+    padding: 2rem 0rem;
     text-align: center;
+    background-color: #a9a9a9;
+    border-radius: 0.4rem #ff7676;
+    @media (max-width: 700px) {
+      font-size: 2rem;
+    }
   }
 `;
 
 const Games = styled(motion.div)`
-  min-height: 50vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   align-content: flex-start;
 `;

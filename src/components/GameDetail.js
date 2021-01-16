@@ -70,10 +70,6 @@ function GameDetail({ pathId }) {
             <Stats>
               <div className='rating'>
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
-                <p>
-                  The Developer{' '}
-                  {game.developers.map((developer) => developer.name)}
-                </p>
                 <p>Rating: {game.rating}</p>
                 {getStars()}
               </div>
@@ -147,6 +143,7 @@ const Detail = styled(motion.div)`
   left: 10%;
   color: black;
   z-index: 10;
+  background-color: #dcdcdc;
   img {
     width: 100%;
   }
@@ -226,6 +223,7 @@ const Media = styled(motion.div)`
 
 const Description = styled(motion.div)`
   margin: 1.5rem 0rem;
+  color: #a9a9a9;
   @media (max-width: 700px) {
     p {
       font-size: 0.9rem;
