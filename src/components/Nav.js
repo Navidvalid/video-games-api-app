@@ -28,7 +28,7 @@ function Nav() {
     <StyledNav variants={fadeIn} initial='hidden' animate='show'>
       <Logo onClick={clearSearched}>
         <img src={logo} alt='logo' />
-        <h1>Ignite</h1>
+        <h1>Games search engine</h1>
       </Logo>
       <form className='search'>
         <input value={textInput} onChange={inputHandler} type='text' />
@@ -67,6 +67,7 @@ const StyledNav = styled(motion.nav)`
 const Logo = styled(motion.div)`
   display: flex;
   justify-content: center;
+  text-align: center;
   padding: 1rem;
   cursor: pointer;
   img {
