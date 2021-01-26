@@ -12,6 +12,7 @@ function Game({ game }) {
   const stringPathId = game.id.toString();
   const dispatch = useDispatch();
 
+  console.log(game);
   const loadDetailHandler = () => {
     document.body.style.overflow = 'hidden';
     dispatch(loadDetail(game.id));
@@ -30,7 +31,8 @@ function Game({ game }) {
           <p>{game.released}</p>
           <motion.img
             layoutId={`image ${stringPathId}`}
-            src={smallImage(game.background_image, 640)}
+            //src={smallImage(game.background_image, 640)}
+            src={game.background_image}
             alt={game.name}
           />
         </div>

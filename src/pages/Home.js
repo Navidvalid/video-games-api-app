@@ -91,7 +91,6 @@ const GameList = styled(motion.div)`
     padding: 2rem 0rem;
     text-align: center;
     background-color: #a9a9a9;
-    border-radius: 0.4rem #ff7676;
     @media (max-width: 700px) {
       font-size: 2rem;
     }
